@@ -6,7 +6,7 @@ const connect = async () => {
     return;
   }
 
-  return mongoose
+  return await  mongoose
     .connect(
       process.env.DATABASE_URL! 
     )
