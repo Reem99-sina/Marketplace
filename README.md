@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# Marketplace Admin Dashboard
+
+A modern web application for managing vendors, stores, products, and orders. Built with **Next.js**, **TypeScript**, **React**, **Mongoose/MongoDB**, and **ShadCN UI** components.
+
+---
+
+## Table of Contents
+
+* [Features](#features)
+* [Tech Stack](#tech-stack)
+* [Project Structure](#project-structure)
+* [Installation](#installation)
+* [Usage](#usage)
+* [API Endpoints](#api-endpoints)
+* [License](#license)
+
+---
+
+## Features
+
+* **User Roles:**
+
+  * Customer
+  * Vendor
+  * Admin
+
+* **Vendor/Store Management:**
+
+  * Create and delete stores
+  * Assign products to stores
+  * Populate vendor information
+
+* **Product Management:**
+
+  * Add,  delete products
+  * View product details per store
+
+* **Order Management:**
+
+  * Track orders per store
+  * Toggle order payment status
+  * Delete orders and associated order items
+
+* **Dynamic Tables:**
+
+  * Custom reusable table component (`CustomTable`)
+  * Column configuration and custom rendering
+  * Delete action with loading state
+
+* **Authentication:**
+
+  * JWT-based authentication
+  * Role-based access control (Admin, Vendor, Customer)
+
+---
+
+## Tech Stack
+
+* **Frontend:** Next.js 13 (App Router), React, TypeScript
+* **UI:** ShadCN UI, Tailwind CSS, Lucide Icons
+* **Backend:** Next.js API Routes, Node.js
+* **Database:** MongoDB with Mongoose
+* **State Management:** React `useState`, `useEffect`
+* **Other:** REST API, JWT Authentication
+
+---
+
+## Project Structure
+
+```
+src/
+├─ app/
+│  ├─ (auth)/           # Login/Signup pages
+│  ├─ admin/            # Admin dashboard pages
+│  ├─ vendor/           # Vendor-specific pages
+│  └─ api/              # Next.js API routes
+│     ├─ order/         # Order endpoints (GET, PATCH, DELETE)
+│     ├─ store/         # Store endpoints
+│     ├─ product/       # Product endpoints
+│     └─ auth/          # Authentication endpoints
+├─ components/
+│  ├─ ui/               # ShadCN-based UI components (Table, Button, Badge)
+│  └─ common/           # Reusable components (CustomTable)
+├─ models/              # Mongoose schemas (Store, Product, Order, User)
+├─ actions/             # Fetching/updating data functions
+└─ lib/                 # Utility functions (DB connection, getUserFromCookie)
+```
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/marketplace-dashboard.git
+cd marketplace-dashboard
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set environment variables:
+
+```env
+MONGODB_URI=<your_mongodb_connection_string>
+JWT_SECRET=<your_jwt_secret>
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+* **Admin Dashboard:**
 
-To learn more about Next.js, take a look at the following resources:
+  * View all stores, products, and orders
+  * Delete stores and automatically remove their products
+  * Manage order payment status and delete orders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Vendor Dashboard:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  * View own store and products
+  * Add/edit/delete products
+  * Track orders for your store
 
-## Deploy on Vercel
+* **Custom Table Component:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  * Reusable table component (`CustomTable`) for displaying any type of data
+  * Supports column rendering, delete actions, and dynamic keys
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## API Endpoints
+
+| Method | Endpoint            | Description                                       |
+| ------ | ------------------- | ------------------------------------------------- |
+| GET    | /api/store          | Fetch store(s) (populates products & vendor info) |
+| DELETE | /api/store/:id      | Delete a store and associated products            |
+| GET    | /api/product        | Fetch all products                                |
+| DELETE | /api/product/:id    | Delete a product                                  |
+| GET    | /api/order/:orderId | Fetch a single order                              |
+| PATCH  | /api/order/:orderId | Update order payment status                       |
+| DELETE | /api/order/:orderId | Delete an order and its order items               |
+
+
