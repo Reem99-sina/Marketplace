@@ -8,7 +8,7 @@ const connect = async () => {
 
   return mongoose
     .connect(
-      process.env.NEXT_PUBLIC_DATABASE_URL! 
+      process.env.DATABASE_URL! 
     )
     .then(() => {
       console.log("done connect to database");
