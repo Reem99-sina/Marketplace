@@ -19,6 +19,3 @@ const connect = async () => {
 };
 
 export default connect;
-
-// ||
-        // "mongodb+srv://reemsina:A6dg7ia4%40@cluster0.f01jr9o.mongodb.net/marketplace"
