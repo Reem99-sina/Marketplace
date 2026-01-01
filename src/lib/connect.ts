@@ -8,7 +8,7 @@ const connect = async () => {
 
   return await  mongoose
     .connect(
-      process.env.DATABASE_URL||'mongodb+srv://reemsina:A6dg7ia4%40@cluster0.f01jr9o.mongodb.net/marketplace'
+      process.env.DATABASE_URL! 
     )
     .then(() => {
       console.log("done connect to database");
