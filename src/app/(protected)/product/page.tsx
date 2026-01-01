@@ -26,6 +26,7 @@ import { fetchStore } from "@/actions/storeAction";
 import { useUser } from "@/contexts/use-user";
 import { Role } from "@/models/Role";
 import { CardProduct } from "@/components/store/CardProduct";
+import { ResponseMessage } from "@/types/auth";
 
 export default function StoreProductsPage() {
   const [products, setProducts] = useState<ProductDoc[]>([]);
@@ -46,7 +47,7 @@ export default function StoreProductsPage() {
         setProducts(prods);
       }
     } catch (err) {
-      console.error(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -57,7 +58,7 @@ export default function StoreProductsPage() {
       const prods = await fetchAllProducts();
       setProducts(prods);
     } catch (err) {
-      console.error(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -68,7 +69,7 @@ export default function StoreProductsPage() {
       const s = await fetchStore();
       setStore(s as StoreDoc);
     } catch (err) {
-      console.error(err);
+      console.log(err);
       setStore(null);
     } finally {
       setLoading(false);
@@ -83,7 +84,8 @@ export default function StoreProductsPage() {
       setNewProduct({ name: "", price: "" });
       setIsDialogOpen(false);
     } catch (err) {
-      console.error(err);
+      alert((err as ResponseMessage)?.message || "something wrong");
+      setIsDialogOpen(false);
     }
   };
   const handleDeleteProduct = async (productId: string) => {
@@ -94,7 +96,7 @@ export default function StoreProductsPage() {
         products.filter((p) => p._id?.toString() != productId?.toString())
       );
     } catch (err) {
-      console.error(err);
+      alert((err as ResponseMessage)?.message || "something wrong");
     }
   };
   useEffect(() => {
@@ -104,8 +106,6 @@ export default function StoreProductsPage() {
   useEffect(() => {
     if (store?._id) {
       loadProducts();
-    } else {
-      loadUserProducts();
     }
   }, [store]);
 

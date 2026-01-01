@@ -18,7 +18,7 @@ export default function AdminPage() {
       const prods = await fetchAllProducts();
       setProducts(prods);
     } catch (err) {
-      console.error(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }

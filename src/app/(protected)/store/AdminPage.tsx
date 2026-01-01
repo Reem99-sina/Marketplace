@@ -25,7 +25,7 @@ export default function AdminPage() {
 
       setStore(s as StoreDoc[]);
     } catch (err) {
-      console.error(err);
+      console.log(err);
       setStore([]);
     } finally {
       setLoading(false);

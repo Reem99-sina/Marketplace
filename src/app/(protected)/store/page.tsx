@@ -27,7 +27,7 @@ export default function VendorStorePage() {
       const s = await fetchStore();
       setStore(s as StoreDoc);
     } catch (err) {
-      console.error(err);
+      console.log(err);
       setStore(null);
     } finally {
       setLoading(false);

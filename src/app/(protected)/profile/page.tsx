@@ -22,7 +22,7 @@ export default function Profile() {
       refetchUser();
       router.replace("/login");
     } catch (err) {
-      console.error(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }

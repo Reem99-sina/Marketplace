@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     );
     return NextResponse.json({ cart });
   } catch (error) {
-    console.error("GET cart error:", error);
+    console.log("GET cart error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ cart });
   } catch (error) {
-    console.error("POST cart error:", error);
+    console.log("POST cart error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -140,7 +140,7 @@ export async function DELETE(req: NextRequest) {
 
     return NextResponse.json({ cart });
   } catch (error) {
-    console.error("DELETE cart error:", error);
+    console.log("DELETE cart error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
@@ -173,7 +173,7 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ cart });
   } catch (error) {
-    console.error("PATCH cart error:", error);
+    console.log("PATCH cart error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }

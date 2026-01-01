@@ -25,7 +25,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       const total = cart?.items.reduce((acc, item) => acc + item.quantity, 0) || 0;
       setCartCount(total);
     } catch (err) {
-      console.error("Failed to refresh cart:", err);
+      console.log("Failed to refresh cart:", err);
     }
   };
 

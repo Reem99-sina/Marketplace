@@ -46,7 +46,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
       message: "Store deleted successfully",
     });
   } catch (error) {
-    console.error("DELETE store error:", error);
+    console.log("DELETE store error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }

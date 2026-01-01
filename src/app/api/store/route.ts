@@ -70,7 +70,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ store });
   } catch (error) {
-    console.error("Error fetching store:", error);
+    console.log("Error fetching store:", error);
     return NextResponse.json(
       { message: "Failed to fetch store data" },
       { status: 500 }

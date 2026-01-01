@@ -129,7 +129,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ orders }, { status: 200 });
   } catch (error) {
-    console.error("GET orders error:", error);
+    console.log("GET orders error:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
