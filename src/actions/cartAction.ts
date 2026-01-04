@@ -15,7 +15,7 @@ export const fetchCart = async (): Promise<CartPopulated | null> => {
   });
 
   const data = await res.json();
-  if (!res.ok) throw new Error(data.message || "Failed to fetch cart");
+  if (!res.ok) return null;
 
   return data.cart;
 };

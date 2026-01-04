@@ -106,6 +106,8 @@ export default function StoreProductsPage() {
   useEffect(() => {
     if (store?._id) {
       loadProducts();
+    } else if (user?.role == Role.CUSTOMER) {
+      loadUserProducts();
     }
   }, [store]);
 
